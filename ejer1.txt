@@ -1,0 +1,33 @@
+#include <iostream>
+#include <vector>
+#include <random>
+
+using std::vector; using std::cout; using std::cin; using std::endl;
+
+template<typename T>
+vector<T> func(T n){
+    std::random_device rd;
+    std::default_random_engine re(rd());
+    std::uniform_int_distribution<int> ud(1,10);
+    vector<T> vec(n);
+    for(auto& item: vec)
+        item = ud(rd);
+    int vect2Size = 0;
+    for(auto &it : vec)
+        cout << it <<" ";
+    cout << endl;
+    vector<T> vec2;
+    for(auto it : vec){
+        for(int i = 0; i < it; i++){
+            vec2.push_back(it);
+        }
+    }
+    return vec2;
+}
+
+int main() {
+    auto vec2 = func(3);
+    for(auto i : vec2)
+        cout << i << " ";
+    return 0;
+}
