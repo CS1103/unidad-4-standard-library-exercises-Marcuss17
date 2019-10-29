@@ -1,0 +1,33 @@
+#include <iostream>
+#include <iterator>
+#include <list>
+#include <array>
+#include <map>
+
+template<typename T, typename M>
+void printM(std::map<T,M> map2){
+    for(auto it = map2.begin(); it != map2.end(); it++){
+        std::cout << it->second;
+        std::cout << std::endl;
+    }
+}
+using namespace std;
+int main(){
+    std::array<int, 3> arr{0};
+    for(auto& it: arr)
+        std::cin >> it;
+    std::list<double>l(3);
+    for(auto& it:l)
+        std::cin >> it;
+    std::map<int, double> map2;
+    auto it1 = arr.begin();
+    auto it2 = l.begin();
+    for(auto it: arr){
+        map2.insert(pair<int,double>(*it1,*it2));
+        it1++;
+        it2++;
+    }
+    printM(map2);
+    return 0;
+}
+
